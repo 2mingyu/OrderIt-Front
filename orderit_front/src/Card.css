@@ -1,0 +1,10 @@
+.CardWindow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #ffffff;
+  height: 60%;
+  width: 60%;
+  border: 5px solid black;
+}
