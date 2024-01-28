@@ -90,53 +90,47 @@ const Menu: React.FC<MenuProps> = ({ setCurrentPage, menuList, cart, setCart }) 
     const decaffeineOption = menuList[selectedCategory][selectedMenu]['디카페인 여부'];
     const sizeupOption = menuList[selectedCategory][selectedMenu]['사이즈업 여부'];
     return (
-      <div className="menuOptions">
-        {hotIceOption === 'HOT ONLY' && (
-          <p>HOT/ICE 선택:
-            <button onClick={() => setSelectedHotOrIce("HOT")} className={selectedHotOrIce === "HOT" ? "selected" : ""}>HOT</button>
-          </p>
-        )}
-        {hotIceOption === 'ICE ONLY' && (
-          <p>HOT/ICE 선택:
-            <button onClick={() => setSelectedHotOrIce("ICE")} className={selectedHotOrIce === "ICE" ? "selected" : ""}>ICE</button>
-          </p>
-        )}
-        {hotIceOption === 'Y' && (
-          <p>HOT/ICE 선택:
-            <>
-              <button onClick={() => setSelectedHotOrIce("HOT")} className={selectedHotOrIce === "HOT" ? "selected" : ""}>HOT</button>
-              <button onClick={() => setSelectedHotOrIce("ICE")} className={selectedHotOrIce === "ICE" ? "selected" : ""}>ICE</button>
-            </>
-          </p>
-        )}
-        {shotAddOption === 'Y' && (
-          <p>샷 추가 횟수: {selectedShots} {/* 샷 추가 횟수 표시 */}
-            <button onClick={() => setSelectedShots(selectedShots + 1)}>+</button> {/* 샷 추가 버튼 */}
-            <button onClick={() => setSelectedShots(selectedShots - 1)}>-</button> {/* 샷 제거 버튼 */}
-          </p>
-        )}
-        {decaffeineOption === 'Y' && (
-          <p>
-            디카페인 여부:
-            <input
-              type="checkbox"
-              checked={selectedDecaffeine === '디카페인'}
-              onChange={() => setSelectedDecaffeine(selectedDecaffeine === '디카페인' ? '' : '디카페인')}
-            />
-          </p>
-        )}
-        {sizeupOption === 'Y' && (
-          <p>
-            사이즈업 여부:
-            <input
-              type="checkbox"
-              checked={selectedSizeup === '사이즈업'}
-              onChange={() => setSelectedSizeup(selectedSizeup === '사이즈업' ? '' : '사이즈업')}
-            />
-          </p>
-        )}
-        <button onClick={closeMenuOptions}>닫기</button>
-        <button onClick={() => addToCart_menuOptions()}>장바구니에 추가</button>
+      <div className="menuOptions-background">
+        <div className="menuOptions-window">
+          {hotIceOption === 'HOT ONLY' && (
+            <div className="option"><h3 className='optionText'>HOT/ICE 선택</h3>
+              <button onClick={() => setSelectedHotOrIce("HOT")} className={`optionButton ${selectedHotOrIce === "HOT" ? "selected" : ""}`}>HOT</button>
+            </div>
+          )}
+          {hotIceOption === 'ICE ONLY' && (
+            <div className="option"><h3 className='optionText'>HOT/ICE 선택</h3>
+              <button onClick={() => setSelectedHotOrIce("ICE")} className={`optionButton ${selectedHotOrIce === "ICE" ? "selected" : ""}`}>ICE</button>
+            </div>
+          )}
+          {hotIceOption === 'Y' && (
+            <div className="option"><h3 className='optionText'>HOT/ICE 선택</h3>
+              <>
+                <button onClick={() => setSelectedHotOrIce("HOT")} className={`optionButton ${selectedHotOrIce === "HOT" ? "selected" : ""}`}>HOT</button>
+                <button onClick={() => setSelectedHotOrIce("ICE")} className={`optionButton ${selectedHotOrIce === "ICE" ? "selected" : ""}`}>ICE</button>
+              </>
+            </div>
+          )}
+          {shotAddOption === 'Y' && (
+            <div className="option"><h3 className='optionText'>샷 추가 횟수 {selectedShots} {/* 샷 추가 횟수 표시 */} </h3>
+              <button onClick={() => setSelectedShots(selectedShots + 1)} className='optionButton'>+</button> {/* 샷 추가 버튼 */}
+              <button onClick={() => setSelectedShots(selectedShots > 0? selectedShots - 1 : 0)} className='optionButton'>-</button> {/* 샷 제거 버튼 */}
+            </div>
+          )}
+          {decaffeineOption === 'Y' && (
+            <div className="option">
+              <h3 className='optionText'>디카페인</h3>
+              <button onClick={() => setSelectedDecaffeine(selectedDecaffeine === '디카페인' ? '' : '디카페인')} className={`optionButton ${selectedDecaffeine === '디카페인' ? 'selected' : ''}`}></button>
+            </div>
+          )}
+          {sizeupOption === 'Y' && (
+            <div className="option">
+              <h3 className='optionText'>사이즈업</h3>
+              <button onClick={() => setSelectedSizeup(selectedSizeup === '사이즈업' ? '' : '사이즈업')} className={`optionButton ${selectedSizeup === '사이즈업' ? 'selected' : ''}`}></button>
+            </div>
+          )}
+          <button className='optionButton2' onClick={() => {addToCart_menuOptions(); closeMenuOptions()}}>장바구니에 추가</button>
+          <button className='optionButton2' onClick={closeMenuOptions}>닫기</button>
+        </div>
       </div>
     );
   };
@@ -193,7 +187,7 @@ const Menu: React.FC<MenuProps> = ({ setCurrentPage, menuList, cart, setCart }) 
     <div className="MenuWindow">
       <div className="categoryButtons">
         {Object.keys(menuList).map((category) => (
-          <div className="categoryButton"
+          <div className={`categoryButton ${selectedCategory === category ? 'selected' : ''}`}
             key={category}
             onClick={() => setSelectedCategory(category)}
           >
@@ -203,34 +197,49 @@ const Menu: React.FC<MenuProps> = ({ setCurrentPage, menuList, cart, setCart }) 
       </div>
       <div className="menuList">
         {Object.keys(menuList[selectedCategory]).map((menuName) => (
-          <div key={menuName} onClick={() => showMenuOptions(menuName)}>
-            <h2>{menuName}</h2>
+          <div className="menuElement" key={menuName} onClick={() => showMenuOptions(menuName)}>
+            <div className="menuImage">이미지 들어갈 자리</div>
+            <div className="menuInfo">
+              <h2>{menuName}</h2>
+              <h3 className="menuPrice">{menuList[selectedCategory][menuName].price}원</h3>
+            </div>
           </div>
         ))}
       </div>
       {renderMenuOptions()}
-      <div className="cartList">
-        <h3>장바구니</h3>
-        <ul>
-          {Object.keys(cart).map((cartKey) => (
-            <li key={cartKey}>
-              {cartKey}: {cart[cartKey].quantity}개
-              <button onClick={() => removeFromCart(cartKey, 1)}>빼기</button>
-              <button onClick={() => addToCart(cartKey, 1)}>더하기</button>
-            </li>
-          ))}
-        </ul>
-        <p>총 가격: {calculateTotal()}원</p>
-      </div>
-      <button onClick={() => setCart({})}>장바구니 전체 비우기</button> {/* 장바구니 전체 비우기 버튼 */}
-      <div className="openCardButton" onClick={openCard}>
-        결제하기 ({calculateTotal()}원)
+      <div className='bottomContainer'>
+        <div className='ASR-text'>
+          여기에 음성인식 내용이 들어갈거임
+        </div>
+        <div className="cartList">
+          <h2 className='cartText'>장바구니</h2>
+            {Object.keys(cart).map((cartKey) => (
+              <div key={cartKey}>
+                <div className='cartElement'>
+                  <h3 className='cartText'>{cartKey}</h3>
+                  <button className='optionButton' onClick={() => removeFromCart(cartKey, 1)}>-</button>
+                  <h3>{cart[cartKey].quantity}</h3>
+                  <button className='optionButton'onClick={() => addToCart(cartKey, 1)}>+</button>
+                </div>
+              </div>
+            ))}
+        </div>
+        <div className="bottom-rightContainer">
+          <div className="bottom-rightTextContainer">
+            <h2 className='bottom-rightText'>주문금액</h2>
+            <h2 className='bottom-rightText'>{calculateTotal()} 원</h2>
+          </div>
+          <div className="bottom-rightButtonContainer">
+            <button className='bottom-rightButton' onClick={() => setCart({})}>전체삭제</button>
+            <button className="bottom-rightButton" onClick={openCard}>결제하기</button>
+          </div>
+        </div>
       </div>
       {isCard && (
         <div className="CardOverMenu">
           <Card setCurrentPage={setCurrentPage} setCard={setCard} total={calculateTotal()} />
         </div>
-      )}
+        )}
     </div>
   );
 };

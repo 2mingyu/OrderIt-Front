@@ -28,6 +28,34 @@ const Start: React.FC<StartProps> = ({ setCurrentPage, setMenuList, setTOGO }) =
           '디카페인 여부': 'Y',
           '사이즈업 여부': 'Y',
           price: 2000
+        },
+        '에스프레소2': {
+          'HOT/ICE 여부': 'HOT ONLY',
+          '샷 추가 여부': 'N',
+          '디카페인 여부': 'N',
+          '사이즈업 여부': 'N',
+          price: 1000
+        },
+        '아메리카노2': {
+          'HOT/ICE 여부': 'Y',
+          '샷 추가 여부': 'Y',
+          '디카페인 여부': 'Y',
+          '사이즈업 여부': 'Y',
+          price: 2000
+        },
+        '에스프레소3': {
+          'HOT/ICE 여부': 'HOT ONLY',
+          '샷 추가 여부': 'N',
+          '디카페인 여부': 'N',
+          '사이즈업 여부': 'N',
+          price: 1000
+        },
+        '아메리카노3': {
+          'HOT/ICE 여부': 'Y',
+          '샷 추가 여부': 'Y',
+          '디카페인 여부': 'Y',
+          '사이즈업 여부': 'Y',
+          price: 2000
         }
       },
       'NonCoffee': {

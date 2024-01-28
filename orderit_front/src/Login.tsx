@@ -8,6 +8,11 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({ setCurrentPage }) => {
   const handleLogin = () => {
     // TODO: 로그인 구현
+
+    // token = 호출(서버.서버.서버.서버:포트/로그인/ID/Passw)
+    // token은 브라우저에 저장이 되지
+    // 페이지를 넘어갈려고할때 토큰 유효한지 확인하고 넘어가게됨
+    
     setCurrentPage('Start');
   };
   
