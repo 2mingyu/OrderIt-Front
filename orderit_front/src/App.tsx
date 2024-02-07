@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import "./App.css"
-import TitleBar from "./TitleBar";
-import MainWindow from "./MainWindow";
+import { BrowserRouter, Routes, Route  } from 'react-router-dom';
+
+import HomePage from './pages/HomePage';
+import OrderPage from './pages/OrderPage';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('Login');
-  const [TOGO, setTOGO] = useState('포장');
-
   return (
-    <div className="App">
-      <TitleBar currentPage={currentPage} setCurrentPage={setCurrentPage} TOGO={TOGO} />
-      <MainWindow currentPage={currentPage} setCurrentPage={setCurrentPage} TOGO={TOGO} setTOGO={setTOGO} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/order" element={<OrderPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
