@@ -1,0 +1,24 @@
+.cartList {
+  width: 500px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px #00000040;
+  margin: 5px;
+
+  overflow-y: auto; /* 세로 스크롤 활성화 */
+}
+
+.cartText {
+  width: 400px;
+  margin-left: 10px;
+}
+
+.cartElement {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin-right: 10px;
+  height: 35px;
+}

@@ -1,0 +1,41 @@
+.StartWindow {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.StartWindow .div-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 5vh;
+}
+
+.StartWindow .div-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10vw;
+}
+
+.StartWindow .div-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.StartWindow .image {
+  height: 200px;
+  width: 200px;
+  margin: 50px;
+}

@@ -1,0 +1,8 @@
+.menuList {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  gap: 10px;
+}
