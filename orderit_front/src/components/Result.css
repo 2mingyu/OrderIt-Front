@@ -1,4 +1,4 @@
-.Payment-background {
+.Result-background {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -9,10 +9,9 @@
   align-items: center;
 
   background-color: rgba(255, 255, 255, 0.5);
-
 }
 
-.Payment-window {
+.Result-window {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +28,7 @@
   box-shadow: 0px 4px 4px #00000040;
 }
 
-.Payment-button{
+.Result-button{
   display: flex;
   align-items: center;
   justify-content: center;

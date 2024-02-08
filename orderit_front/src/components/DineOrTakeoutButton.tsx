@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
 
 import './DineOrTakeoutButton.css';
-import DineImage from '../assets/Dine-image.png';
-import TakeoutImage from '../assets/Takeout-image.png';
+import DineImage from '../assets/Dine-icon.png';
+import TakeoutImage from '../assets/Takeout-icon.webp';
 
 interface DineOrTakeoutButtonProps {
   type: 'Dine' | 'Takeout';

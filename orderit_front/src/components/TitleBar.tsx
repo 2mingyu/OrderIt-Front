@@ -8,10 +8,9 @@ import LOGO from '../assets/OrderIt-logo.png';
 
 const TitleBar: React.FC = () => {
   const navigate = useNavigate();
-  const { dineOrTakeout, setDineOrTakeout } = useDineOrTakeout();
+  const { dineOrTakeout } = useDineOrTakeout();
 
   const handleClick = () => {
-      setDineOrTakeout('');
       navigate('/');
     };
   const message = dineOrTakeout === 'Dine' ? '매장' : '포장';

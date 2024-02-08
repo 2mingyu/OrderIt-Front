@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useMenuList } from '../context/MenuListContext';
+import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
 import GetMenuList from '../utils/GetMenuList';
 
 import './HomePage.css';
@@ -9,10 +10,12 @@ import DineOrTakeoutButton from '../components/DineOrTakeoutButton';
 
 const Home: React.FC = () => {
   const { setMenuList } = useMenuList();
+  const { setDineOrTakeout } = useDineOrTakeout();
 
   useEffect(() => {
+    setDineOrTakeout('');
     GetMenuList(setMenuList);
-  }, [setMenuList]);
+  }, [setMenuList, setDineOrTakeout]);
 
   return (
     <div className='home-page'>
