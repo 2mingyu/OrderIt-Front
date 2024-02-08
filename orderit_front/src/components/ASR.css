@@ -1,0 +1,10 @@
+.ASR {
+  flex-grow: 1;
+
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.ASR-text {
+  margin-left: 10px;
+}

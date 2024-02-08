@@ -8,6 +8,7 @@ import TitleBar from '../components/TitleBar';
 import CategoryButtons from '../components/CategoryButtons';
 import MenuItemList from '../components/MenuItemList';
 import MenuOptions from '../components/MenuOptions';
+import ASR from '../components/ASR';
 import CartList from '../components/CartList';
 import Payment from '../components/Payment';
 
@@ -31,16 +32,15 @@ const Order: React.FC = () => {
       {selectedMenu &&
         <MenuOptions selectedCategory={selectedCategory} selectedMenu={selectedMenu} closeMenuOptions={() => setSelectedMenu("")} />
       }
-      <CartList/>
-      <div className="bottom-rightContainer">
-          <div className="bottom-rightTextContainer">
-            <h2 className='bottom-rightText'>주문금액</h2>
-            <h2 className='bottom-rightText'>{0} 원</h2>
-          </div>
-          <div className="bottom-rightButtonContainer">
-            <button className='bottom-rightButton' onClick={() => setCart({})}>전체삭제</button>
-            <button className="bottom-rightButton" onClick={() => setIsPayment(true)}>결제하기</button>
-          </div>
+      <div className='container-1'>
+        <ASR/>
+        <CartList/>
+        <div className='container-2'>
+            <h2 className='container-2-text'>주문금액</h2>
+            <h2 className='container-2-text'>{0}원</h2>
+            <h2 className='container-2-button' onClick={() => setCart({})}>전체삭제</h2>
+            <h2 className='container-2-button' onClick={() => setIsPayment(true)}>결제하기</h2>
+        </div>
       </div>
       {isPayment && 
         <Payment setIsPayment={setIsPayment} total={0}/>

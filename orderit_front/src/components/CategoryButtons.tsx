@@ -13,7 +13,7 @@ const CategoryButtons: React.FC<CategoryButtonsProps> = ({ selectedCategory, set
         <div className={`categoryButton ${selectedCategory === category ? 'selected' : ''}`}
              key={category}
              onClick={() => setSelectedCategory(category)}>
-          {category}
+          <h1>{category}</h1>
         </div>
       ))}
     </div>

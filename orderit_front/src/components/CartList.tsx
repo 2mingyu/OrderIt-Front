@@ -1,4 +1,3 @@
-// src/components/CartList.tsx
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import './CartList.css'; // 카트 리스트에 대한 CSS 파일
@@ -16,9 +15,9 @@ const CartList: React.FC = () => {
           <div key={cartKey}>
             <div className='cartElement'>
               <h3 className='cartText'>{cartKey}</h3>
-              <button className='optionButton' onClick={() => minusFromCart({ cart, setCart, cartKey, minusNum })}>-</button>
-              <h3>{cart[cartKey].quantity}</h3>
-              <button className='optionButton'onClick={() => plusToCart({ cart, setCart, cartKey, plusNum })}>+</button>
+              <div className='cartButton' onClick={() => minusFromCart({ cart, setCart, cartKey, minusNum })}>-</div>
+              <h3 className='quantity-text'>{cart[cartKey].quantity}</h3>
+              <div className='cartButton'onClick={() => plusToCart({ cart, setCart, cartKey, plusNum })}>+</div>
             </div>
           </div>
         ))}
