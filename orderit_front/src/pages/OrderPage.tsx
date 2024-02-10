@@ -16,10 +16,16 @@ import Result from '../components/Result';
 
 const Order: React.FC = () => {
   const { menuList } = useMenuList();
-  const { setCart } = useCart();
+  const { cart, setCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState(Object.keys(menuList)[0]); // 첫 번째 카테고리 키 값으로 설정
   const [selectedMenu, setSelectedMenu] = useState("");
   const [isPayment, setIsPayment] = useState('before'); // before, wait, after
+
+  const calculateTotal = () => {
+    return Object.values(cart).reduce((total: number, item: any) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  };
 
   useEffect(() => {
     setCart({}); // 카트를 빈 객체로 초기화
@@ -38,13 +44,13 @@ const Order: React.FC = () => {
         <CartList/>
         <div className='container-2'>
             <h2 className='container-2-text'>주문금액</h2>
-            <h2 className='container-2-text'>{0}원</h2>
+            <h2 className='container-2-text'>{calculateTotal()}원</h2>
             <h2 className='container-2-button' onClick={() => setCart({})}>전체삭제</h2>
             <h2 className='container-2-button' onClick={() => setIsPayment('wait')}>결제하기</h2>
         </div>
       </div>
       {isPayment==='wait' && 
-        <Payment setIsPayment={setIsPayment} total={0}/>
+        <Payment setIsPayment={setIsPayment} total={calculateTotal()}/>
       }
       {isPayment==='after' &&
         <Result />
