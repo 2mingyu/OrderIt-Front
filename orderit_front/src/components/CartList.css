@@ -1,6 +1,6 @@
 .cartList {
   width: 400px;
-  overflow-y: auto; /* 세로 스크롤 활성화 */
+  overflow-y: scroll; /* 세로 스크롤 활성화 */
 
   background-color: #ffffff;
   border-radius: 10px;

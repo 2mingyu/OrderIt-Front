@@ -1,9 +1,5 @@
 interface cartItem {
   menuName: string;
-  'HOT/ICE 선택': string;
-  '샷 추가 횟수': number;
-  '디카페인 선택': string;
-  '사이즈업 선택': string;
   price: number;
 }
 

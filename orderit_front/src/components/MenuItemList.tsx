@@ -6,10 +6,9 @@ import MenuItem from './MenuItem';
 
 interface MenuItemListProps {
   selectedCategory: string
-  setSelectedMenu: (menuName: string) => void;
 }
 
-const MenuItemList: React.FC<MenuItemListProps> = ({ selectedCategory, setSelectedMenu }) => {
+const MenuItemList: React.FC<MenuItemListProps> = ({ selectedCategory }) => {
   const { menuList } = useMenuList();
   const menuItems = menuList[selectedCategory];
   return (
@@ -19,7 +18,6 @@ const MenuItemList: React.FC<MenuItemListProps> = ({ selectedCategory, setSelect
           key={menuName}
           menuName={menuName}
           menuDetails={menuItems[menuName]}
-          setSelectedMenu={setSelectedMenu}
         />
       ))}
     </div>

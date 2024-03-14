@@ -1,3 +1,5 @@
+// 사용 안함
+
 import { useState, useEffect } from 'react';
 import { useMenuList } from "../context/MenuListContext";
 import { useCart } from "../context/CartContext";

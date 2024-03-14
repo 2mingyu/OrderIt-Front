@@ -7,7 +7,7 @@ import './OrderPage.css';
 import TitleBar from '../components/TitleBar';
 import CategoryButtons from '../components/CategoryButtons';
 import MenuItemList from '../components/MenuItemList';
-import MenuOptions from '../components/MenuOptions';
+// import MenuOptions from '../components/MenuOptions';
 import ASR from '../components/ASR';
 import CartList from '../components/CartList';
 import Payment from '../components/Payment';
@@ -18,7 +18,7 @@ const Order: React.FC = () => {
   const { menuList } = useMenuList();
   const { cart, setCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState(Object.keys(menuList)[0]); // 첫 번째 카테고리 키 값으로 설정
-  const [selectedMenu, setSelectedMenu] = useState("");
+  // const [selectedMenu, setSelectedMenu] = useState("");
   const [isPayment, setIsPayment] = useState('before'); // before, wait, after
 
   const calculateTotal = () => {
@@ -35,10 +35,11 @@ const Order: React.FC = () => {
     <div className="order-page">
       <TitleBar />
       <CategoryButtons selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} categories={Object.keys(menuList)} />
-      <MenuItemList selectedCategory={selectedCategory} setSelectedMenu={setSelectedMenu} />
-      {selectedMenu &&
+      <MenuItemList selectedCategory={selectedCategory} />
+      {/* MenuOptions 폐기
+        selectedMenu &&
         <MenuOptions selectedCategory={selectedCategory} selectedMenu={selectedMenu} closeMenuOptions={() => setSelectedMenu("")} />
-      }
+      */}
       <div className='container-1'>
         <ASR/>
         <CartList/>
