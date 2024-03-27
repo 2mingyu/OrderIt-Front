@@ -23,7 +23,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuName, menuDetails }) => {
 
   return (
     <div className="menuItem" onClick={() => handleClick(menuName)}>
-      <div className="menuImage">이미지 들어갈 자리</div>
+      <img src={menuDetails.imageUrl} className="menuImage" />
       <div className="menuInfo">
         <h2>{menuName}</h2>
         <h3 className="menuPrice">{menuDetails.price}원</h3>

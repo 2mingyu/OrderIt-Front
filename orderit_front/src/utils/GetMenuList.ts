@@ -1,86 +1,71 @@
-function GetMenuList(setMenuList: (menuList: any) => void) {
+import { API_URL } from './apiConfig';
+
+interface MenuItem {
+  item_id: number;
+  name: string;
+  price: number;
+  imagePath: string;
+  imageUrl?: string;
+}
+
+interface MenuList {
+  [category: string]: {
+    [itemName: string]: MenuItem;
+  };
+}
+
+async function GetMenuList(setMenuList: (menuList: any) => void) {
   let tmpMenuList = {
-    'Coffee': {
-      '에스프레소': {
-        price: 1000
-      },
-      '콜드브루' : {
-        price: 1
-      },
-      '아이스 아메리카노': {
-        price: 2000
-      },
-      '핫 아메리카노': {
-        price: 2000
-      },
-      '아이스 카페라떼': {
-        price: 2
-      },
-      '핫 카페라떼': {
-        price: 3
-      },
-      '아이스 아인슈페너': {
-        price: 8
-      },
-      '핫 아인슈페너': {
-        price: 9
-      },
-      '카푸치노': {
-        price: 10
-      },
+    'HOT': {
+      '아메리카노': {
+        "item_id": 1,
+        "name": "아메리카노",
+        "price": 3000,
+        "imagePath": "example.jpg",
+      }
     },
-    'NonCoffee': {
-      '아이스 바닐라라떼': {
-        price: 4
-      },
-      '핫 바닐라라떼': {
-        price: 5
-      },
-      '아이스 그린티라떼': {
-        price: 6
-      },
-      '핫 그린티라떼': {
-        price: 7
-      },
-      '레몬 에이드': {
-        price: 11
-      },
-      '자몽 에이드': {
-        price: 12
-      },
-      '복숭아 아이스티': {
-        price: 13
-      },
-      '레몬 아이스티': {
-        price: 14
-      },
+    'Cold': {
     },
     'Dessert': {
-      '레드벨벳케이크': {
-        price: 5000
-      },
-      '롤 케이크': {
-        price: 6000
-      },
-      '치즈 케이크': {
-        price: 15
-      },
-      '초코 쿠키': {
-        price: 16
-      },
-      '플레인 쿠키': {
-        price: 17
-      },
-      '소금빵': {
-        price: 18
-      },
-      '스트로베리 초콜릿 생크림 케이크': {
-        price: 19
-      },
+      'greentealatte_ice': {
+        "item_id": 2,
+        "name": "greentealatte_ice",
+        "price": 5000,
+        "imagePath": "6831e236-4eec-4c81-b53b-d2bb282835cegreentealatte_ice.png",
+      }
     },
   };
-
   setMenuList(tmpMenuList);
+  let menuList: MenuList = {};
+  try {
+    const categoryResponse = await fetch(`http://${API_URL}/api/item/category`, {method: 'GET', headers: {'Content-Type': 'application/json'}}); 
+    if (categoryResponse.status === 200) {
+      const categories: string[] = await categoryResponse.json()
+      for (const category of categories) {
+        const itemResponse = await fetch(`http://${API_URL}/api/item/${category}`, {method: 'GET', headers: {'Content-Type': 'application/json'}});
+        if (itemResponse.status === 200) {
+          const items: MenuItem[] = await itemResponse.json();
+          menuList[category] = {};
+          items.forEach(item => {
+            item.imageUrl = `http://${API_URL}/${item.imagePath}`;
+            menuList[category][item.name] = item;
+          });
+        }
+        else {
+          throw new Error(`/api/item/${category} ${itemResponse.status}`);
+        }
+      }
+      setMenuList(menuList);
+    }
+    else {
+      throw new Error(`/api/item/category ${categoryResponse.status}`);
+    }
+    
+    
+  }
+  catch (error) {
+    console.error(error);
+  }
 }
 
 export default GetMenuList;

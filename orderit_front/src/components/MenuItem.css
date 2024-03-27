@@ -1,5 +1,5 @@
 .menuItem {
-  height: 250px;
+  height: 300px;
   width: 200px;
   padding: 5px;
 
@@ -18,7 +18,7 @@
 }
 
 .menuImage {
-  height: 124px;
+  height: 180px;
   width: 180px;
   background-color: gray;
   border-radius: 10px;

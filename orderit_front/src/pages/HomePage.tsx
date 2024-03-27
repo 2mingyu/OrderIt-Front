@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useMenuList } from '../context/MenuListContext';
 import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
 import GetMenuList from '../utils/GetMenuList';
+import { API_URL } from '../utils/apiConfig';
 
 import './HomePage.css';
 import LOGO from '../assets/OrderIt-logo.png';
@@ -25,6 +26,7 @@ const Home: React.FC = () => {
         <DineOrTakeoutButton type='Dine'></DineOrTakeoutButton>
         <DineOrTakeoutButton type='Takeout'></DineOrTakeoutButton>
       </div>
+      <div className='swagger' onClick={() => {window.open(`http://${API_URL}/swagger-ui/index.html`);}}>swagger</div>
     </div>
   );
 };

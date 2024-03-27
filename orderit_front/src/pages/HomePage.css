@@ -24,3 +24,9 @@
 
   gap: 50px;
 }
+
+.swagger {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
