@@ -1,7 +1,7 @@
 .menuItem {
   height: 300px;
-  width: 200px;
-  padding: 5px;
+  min-width: 190px;
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
@@ -14,7 +14,6 @@
 }
 
 .menuInfo {
-  width: 90%;
 }
 
 .menuImage {
@@ -23,6 +22,11 @@
   background-color: gray;
   border-radius: 10px;
 }
+
+.menuName {
+  
+}
+
 
 .menuPrice {
   text-align: right;
