@@ -1,22 +1,7 @@
 import { API_URL } from './apiConfig';
 import { preloadImage } from './preloadImage';
 
-interface MenuItem {
-  item_id: number;
-  name: string;
-  price: number;
-  imagePath: string;
-  imageUrl?: string;
-  imageObj?: HTMLImageElement;
-}
-
-interface MenuList {
-  [category: string]: {
-    [itemName: string]: MenuItem;
-  };
-}
-
-async function Get_item(setMenuList: (menuList: any) => void) {
+async function Get_item(setMenuList: (menuList: MenuList) => void) {
   // 임시
   let tmpMenuList = {
     'HOT': {

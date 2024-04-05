@@ -22,7 +22,7 @@ const Order: React.FC = () => {
   const [isPayment, setIsPayment] = useState('before'); // before, wait, after
 
   const calculateTotal = () => {
-    return Object.values(cart).reduce((total: number, item: any) => {
+    return Object.values(cart).reduce((total: number, item: CartItem) => {
       return total + item.price * item.quantity;
     }, 0);
   };

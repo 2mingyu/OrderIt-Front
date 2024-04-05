@@ -4,8 +4,8 @@ interface cartItem {
 }
 
 interface AddToCartParams {
-  cart: { [key: string]: any };
-  setCart: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
+  cart: Cart;
+  setCart: React.Dispatch<React.SetStateAction<Cart>>;
   cartKey: string;
   cartItem: cartItem;
   addNum: number;
@@ -28,8 +28,8 @@ export const addToCart = ({ cart, setCart, cartKey, cartItem, addNum }: AddToCar
 };
 
 interface PlusToCartParams {
-  cart: { [key: string]: any },
-  setCart: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>,
+  cart: Cart,
+  setCart: React.Dispatch<React.SetStateAction<Cart>>,
   cartKey: string
   plusNum: number;
 }
@@ -41,8 +41,8 @@ export const plusToCart = ({ cart, setCart, cartKey, plusNum }: PlusToCartParams
 };
 
 interface MinusFromCartParams {
-  cart: { [key: string]: any },
-  setCart: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>,
+  cart: Cart,
+  setCart: React.Dispatch<React.SetStateAction<Cart>>,
   cartKey: string
   minusNum: number;
 }
@@ -60,6 +60,6 @@ export const minusFromCart = ({ cart, setCart, cartKey, minusNum }: MinusFromCar
   setCart(updatedCart);
 };
 
-export const clearCart = ( setCart: React.Dispatch<React.SetStateAction<{ [key: string]: any }>> ) => {
+export const clearCart = ( setCart: React.Dispatch<React.SetStateAction<Cart>> ) => {
   setCart({});
 };

@@ -5,7 +5,7 @@ import { addToCart } from '../utils/ManageCart';
 
 interface MenuItemProps {
   menuName: string;
-  menuDetails: any;
+  menuDetails: MenuItem;
 }
 
 const MenuItem: React.FC<MenuItemProps> = ({ menuName, menuDetails }) => {
@@ -23,7 +23,8 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuName, menuDetails }) => {
 
   return (
     <div className="menuItem" onClick={() => handleClick(menuName)}>
-      <img src={menuDetails.imageObj.src} className="menuImage" alt={menuName}/>
+      {menuDetails.imageObj && 
+      <img src={menuDetails.imageObj.src} className="menuImage" alt={menuName}/>}
       <div className="menuInfo">
         <h2 className="menuName">{menuName}</h2>
         <h3 className="menuPrice">{menuDetails.price}원</h3>

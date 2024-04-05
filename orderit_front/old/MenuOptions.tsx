@@ -1,9 +1,9 @@
 // 사용 안함
 
 import { useState, useEffect } from 'react';
-import { useMenuList } from "../context/MenuListContext";
-import { useCart } from "../context/CartContext";
-import { addToCart } from '../utils/ManageCart';
+import { useMenuList } from "../src/context/MenuListContext";
+import { useCart } from "../src/context/CartContext";
+import { addToCart } from '../src/utils/ManageCart';
 
 import './MenuOptions.css';
 
