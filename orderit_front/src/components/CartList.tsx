@@ -11,7 +11,7 @@ const CartList: React.FC = () => {
   return (
     <div className="cartList">
       <h2 className='cartText'>장바구니</h2>
-        {Object.keys(cart).map((cartKey) => (
+        {Object.keys(cart).reverse().map((cartKey) => (
           <div key={cartKey}>
             <div className='cartElement'>
               <h3 className='cartText'>{cartKey}</h3>
