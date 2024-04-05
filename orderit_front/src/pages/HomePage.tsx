@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useMenuList } from '../context/MenuListContext';
 import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
-import GetMenuList from '../utils/GetMenuList';
+import GET_item from '../utils/Get_item';
 import { API_URL } from '../utils/apiConfig';
 
 import './HomePage.css';
@@ -15,7 +15,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     setDineOrTakeout('');
-    GetMenuList(setMenuList);
+    GET_item(setMenuList);
   }, [setMenuList, setDineOrTakeout]);
 
   return (

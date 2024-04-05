@@ -1,4 +1,5 @@
 import { API_URL } from './apiConfig';
+import { preloadImage } from './preloadImage';
 
 interface MenuItem {
   item_id: number;
@@ -6,6 +7,7 @@ interface MenuItem {
   price: number;
   imagePath: string;
   imageUrl?: string;
+  imageObj?: HTMLImageElement;
 }
 
 interface MenuList {
@@ -14,7 +16,8 @@ interface MenuList {
   };
 }
 
-async function GetMenuList(setMenuList: (menuList: any) => void) {
+async function Get_item(setMenuList: (menuList: any) => void) {
+  // 임시
   let tmpMenuList = {
     'HOT': {
       '아메리카노': {
@@ -36,6 +39,7 @@ async function GetMenuList(setMenuList: (menuList: any) => void) {
     },
   };
   setMenuList(tmpMenuList);
+  // 서버 api 호출
   let menuList: MenuList = {};
   try {
     const categoryResponse = await fetch(`http://${API_URL}/api/item/category`, {method: 'GET', headers: {'Content-Type': 'application/json'}}); 
@@ -46,8 +50,9 @@ async function GetMenuList(setMenuList: (menuList: any) => void) {
         if (itemResponse.status === 200) {
           const items: MenuItem[] = await itemResponse.json();
           menuList[category] = {};
-          items.forEach(item => {
+          items.forEach(async item => {
             item.imageUrl = `http://${API_URL}/${item.imagePath}`;
+            item.imageObj = await preloadImage(item.imageUrl);
             menuList[category][item.name] = item;
           });
         }
@@ -68,4 +73,4 @@ async function GetMenuList(setMenuList: (menuList: any) => void) {
   }
 }
 
-export default GetMenuList;
+export default Get_item;
