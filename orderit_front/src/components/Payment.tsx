@@ -1,3 +1,6 @@
+import { useCart } from '../context/CartContext';
+import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
+import Post_order from '../utils/Post_order';
 import './Payment.css';
 
 interface PaymentProps {
@@ -6,10 +9,15 @@ interface PaymentProps {
 }
 
 const Payment: React.FC<PaymentProps> = ({ setIsPayment, total }) => {
+  const { cart } = useCart();
+  const { dineOrTakeout } = useDineOrTakeout();
   const closePayment = () => {
     setIsPayment('before');
   };
-  const succeessPayment = () => {
+  const succeessPayment = async () => {
+    if (dineOrTakeout === null) return;
+    const response = await Post_order(cart, dineOrTakeout);
+    console.log(response);
     setIsPayment('after');
   };
 
