@@ -4,29 +4,25 @@ import { useCart } from '../context/CartContext';
 import { addToCart } from '../utils/ManageCart';
 
 interface MenuItemProps {
-  menuName: string;
-  menuDetails: MenuItem;
+  menuDetails: TypeMenuItem;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ menuName, menuDetails }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ menuDetails }) => {
   const { cart, setCart } = useCart();
 
   const handleClick = (menuName: string) => {
     const cartKey = menuName;
-    const cartItem = {
-      menuName: menuName,
-      price: menuDetails.price,
-    };
+    const cartItem = menuDetails;
     const addNum = 1;
     addToCart({cart, setCart, cartKey, cartItem, addNum});
   }
 
   return (
-    <div className="menuItem" onClick={() => handleClick(menuName)}>
+    <div className="menuItem" onClick={() => handleClick(menuDetails.name)}>
       {menuDetails.imageObj && 
-      <img src={menuDetails.imageObj.src} className="menuImage" alt={menuName}/>}
+      <img src={menuDetails.imageObj.src} className="menuImage" alt={menuDetails.name}/>}
       <div className="menuInfo">
-        <h2 className="menuName">{menuName}</h2>
+        <h2 className="menuName">{menuDetails.name}</h2>
         <h3 className="menuPrice">{menuDetails.price}원</h3>
       </div>
     </div>

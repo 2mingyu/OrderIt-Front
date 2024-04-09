@@ -1,7 +1,7 @@
-import { API_URL } from './apiConfig';
+import { API_URL_SPRING } from './apiConfig_spring';
 import { preloadImage } from './preloadImage';
 
-async function Get_item(setMenuList: (menuList: MenuList) => void) {
+async function Get_item(setMenuList: (menuList: TypeMenuList) => void) {
   // 임시
   let tmpMenuList = {
     'HOT': {
@@ -25,18 +25,34 @@ async function Get_item(setMenuList: (menuList: MenuList) => void) {
   };
   setMenuList(tmpMenuList);
   // 서버 api 호출
-  let menuList: MenuList = {};
+  let menuList: TypeMenuList = {};
   try {
-    const categoryResponse = await fetch(`http://${API_URL}/api/item/category`, {method: 'GET', headers: {'Content-Type': 'application/json'}}); 
+    const categoryResponse = await fetch(
+      `http://${API_URL_SPRING}/api/item/category`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    ); 
     if (categoryResponse.status === 200) {
       const categories: string[] = await categoryResponse.json()
       for (const category of categories) {
-        const itemResponse = await fetch(`http://${API_URL}/api/item/${category}`, {method: 'GET', headers: {'Content-Type': 'application/json'}});
+        const itemResponse = await fetch(
+          `http://${API_URL_SPRING}/api/item/${category}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        );
         if (itemResponse.status === 200) {
-          const items: MenuItem[] = await itemResponse.json();
+          const items: TypeMenuItem[] = await itemResponse.json();
           menuList[category] = {};
           items.forEach(async item => {
-            item.imageUrl = `http://${API_URL}/${item.imagePath}`;
+            item.imageUrl = `http://${API_URL_SPRING}/${item.imagePath}`;
             item.imageObj = await preloadImage(item.imageUrl);
             menuList[category][item.name] = item;
           });

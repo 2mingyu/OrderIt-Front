@@ -1,0 +1,1 @@
+export const API_URL_FLASK = 'localhost:5000';

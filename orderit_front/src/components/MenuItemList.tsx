@@ -16,7 +16,6 @@ const MenuItemList: React.FC<MenuItemListProps> = ({ selectedCategory }) => {
       {Object.keys(menuItems).map((menuName) => (
         <MenuItem
           key={menuName}
-          menuName={menuName}
           menuDetails={menuItems[menuName]}
         />
       ))}

@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface MenuListContextType {
-  menuList: MenuList;
-  setMenuList: (menuList: MenuList) => void; // 메뉴 리스트를 설정하는 함수
+  menuList: TypeMenuList;
+  setMenuList: (menuList: TypeMenuList) => void; // 메뉴 리스트를 설정하는 함수
 }
 
 // 초기 상태 정의

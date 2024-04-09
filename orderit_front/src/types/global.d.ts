@@ -1,4 +1,4 @@
-interface MenuItem {
+interface TypeMenuItem {
   item_id: number;
   name: string;
   price: number;
@@ -8,18 +8,17 @@ interface MenuItem {
 }
 
 
-interface MenuList {
+interface TypeMenuList {
   [category: string]: {
-    [itemName: string]: MenuItem;
+    [menuItemName: string]: TypeMenuItem;
   };
 }
 
-interface CartItem {
-  menuName: string;
-  price: number;
+interface TypeCartItem {
+  menuItem: TypeMenuItem;
   quantity: number;
 }
 
-type Cart = {
-  [key: string]: CartItem;
+type TypeCart = {
+  [key: string]: TypeCartItem;
 }

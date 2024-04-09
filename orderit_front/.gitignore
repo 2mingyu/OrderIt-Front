@@ -22,4 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-apiConfig.ts
+apiConfig_spring.ts
+apiConfig_flask.ts

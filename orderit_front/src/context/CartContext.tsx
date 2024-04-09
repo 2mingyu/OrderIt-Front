@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface CartContextType {
-  cart: Cart; // 카트 리스트의 타입을 더 구체적으로 정의할 수 있습니다.
-  setCart: React.Dispatch<React.SetStateAction<Cart>>; // 카트 리스트를 설정하는 함수
+  cart: TypeCart; // 카트 리스트의 타입을 더 구체적으로 정의할 수 있습니다.
+  setCart: React.Dispatch<React.SetStateAction<TypeCart>>; // 카트 리스트를 설정하는 함수
 }
 
 // 초기 상태 정의

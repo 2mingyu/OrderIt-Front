@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useMenuList } from '../context/MenuListContext';
 import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
 import GET_item from '../utils/Get_item';
-import { API_URL } from '../utils/apiConfig';
+import { API_URL_SPRING } from '../utils/apiConfig_spring';
 
 import './HomePage.css';
 import LOGO from '../assets/OrderIt-logo.png';
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
         <DineOrTakeoutButton type='Dine'></DineOrTakeoutButton>
         <DineOrTakeoutButton type='Takeout'></DineOrTakeoutButton>
       </div>
-      <div className='swagger' onClick={() => {window.open(`http://${API_URL}/swagger-ui/index.html`);}}>swagger</div>
+      <div className='swagger' onClick={() => {window.open(`http://${API_URL_SPRING}/swagger-ui/index.html`);}}>swagger</div>
     </div>
   );
 };
