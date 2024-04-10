@@ -7,6 +7,7 @@ import { API_URL_SPRING } from '../utils/apiConfig_spring';
 import './HomePage.css';
 import LOGO from '../assets/OrderIt-logo.png';
 import DineOrTakeoutButton from '../components/DineOrTakeoutButton';
+import { API_URL_FLASK } from "../utils/apiConfig_flask";
 
 
 const Home: React.FC = () => {
@@ -26,7 +27,10 @@ const Home: React.FC = () => {
         <DineOrTakeoutButton type='Dine'></DineOrTakeoutButton>
         <DineOrTakeoutButton type='Takeout'></DineOrTakeoutButton>
       </div>
-      <div className='swagger' onClick={() => {window.open(`http://${API_URL_SPRING}/swagger-ui/index.html`);}}>swagger</div>
+      <div className='swagger'>
+        <div onClick={() => {window.open(`http://${API_URL_SPRING}/swagger-ui/index.html`);}}>spring swagger</div>
+        <div onClick={() => {window.open(`http://${API_URL_FLASK}`);}}>flask swagger</div>
+      </div>
     </div>
   );
 };
