@@ -1,6 +1,7 @@
 interface TypeMenuItem {
   item_id: number;
-  name: string;
+  eng_name: string;
+  kor_name: string;
   price: number;
   imagePath: string;
   imageUrl?: string;

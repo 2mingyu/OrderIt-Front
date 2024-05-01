@@ -18,11 +18,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuDetails }) => {
   }
 
   return (
-    <div className="menuItem" onClick={() => handleClick(menuDetails.name)}>
+    <div className="menuItem" onClick={() => handleClick(menuDetails.eng_name)}>
       {menuDetails.imageObj && 
-      <img src={menuDetails.imageObj.src} className="menuImage" alt={menuDetails.name}/>}
+      <img src={menuDetails.imageObj.src} className="menuImage" alt={menuDetails.eng_name}/>}
       <div className="menuInfo">
-        <h2 className="menuName">{menuDetails.name}</h2>
+        <h2 className="menuName">{menuDetails.kor_name}</h2>
         <h3 className="menuPrice">{menuDetails.price}원</h3>
       </div>
     </div>

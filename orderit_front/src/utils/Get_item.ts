@@ -7,7 +7,8 @@ async function Get_item(setMenuList: (menuList: TypeMenuList) => void) {
     'HOT': {
       '아메리카노': {
         "item_id": 1,
-        "name": "아메리카노",
+        "eng_name": "americano",
+        "kor_name": "아메리카노",
         "price": 3000,
         "imagePath": "example.jpg",
       }
@@ -17,7 +18,8 @@ async function Get_item(setMenuList: (menuList: TypeMenuList) => void) {
     'Dessert': {
       'greentealatte_ice': {
         "item_id": 2,
-        "name": "greentealatte_ice",
+        "eng_name": "greentealatte_ice",
+        "kor_name": "아이스그린티라떼",
         "price": 5000,
         "imagePath": "6831e236-4eec-4c81-b53b-d2bb282835cegreentealatte_ice.png",
       }
@@ -51,17 +53,20 @@ async function Get_item(setMenuList: (menuList: TypeMenuList) => void) {
         if (itemResponse.status === 200) {
           const items: TypeMenuItem[] = await itemResponse.json();
           menuList[category] = {};
-          items.forEach(async item => {
-            item.imageUrl = `http://${API_URL_SPRING}/${item.imagePath}`;
-            item.imageObj = await preloadImage(item.imageUrl);
-            menuList[category][item.name] = item;
-          });
+          for (const item of items) {
+            if (item.eng_name) {
+              item.imageUrl = `http://${API_URL_SPRING}/${item.imagePath}`;
+              item.imageObj = await preloadImage(item.imageUrl);
+              menuList[category][item.eng_name] = item;
+            }
+          };
         }
         else {
           throw new Error(`/api/item/${category} ${itemResponse.status}`);
         }
       }
       setMenuList(menuList);
+      console.log('Get_item 완료');
     }
     else {
       throw new Error(`/api/item/category ${categoryResponse.status}`);

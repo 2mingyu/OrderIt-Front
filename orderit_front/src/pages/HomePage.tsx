@@ -1,7 +1,4 @@
-import { useEffect } from "react";
-import { useMenuList } from '../context/MenuListContext';
-import { useDineOrTakeout } from '../context/DineOrTakeoutContext';
-import GET_item from '../utils/Get_item';
+
 import { API_URL_SPRING } from '../utils/apiConfig_spring';
 
 import './HomePage.css';
@@ -11,13 +8,6 @@ import { API_URL_FLASK } from "../utils/apiConfig_flask";
 
 
 const Home: React.FC = () => {
-  const { setMenuList } = useMenuList();
-  const { setDineOrTakeout } = useDineOrTakeout();
-
-  useEffect(() => {
-    setDineOrTakeout('');
-    GET_item(setMenuList);
-  }, [setMenuList, setDineOrTakeout]);
 
   return (
     <div className='home-page'>
