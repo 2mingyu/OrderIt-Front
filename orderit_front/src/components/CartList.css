@@ -1,7 +1,5 @@
 .cartList {
   width: 400px;
-  overflow-y: scroll; /* 세로 스크롤 활성화 */
-
   background-color: #ffffff;
   border-radius: 10px;
 }
@@ -9,6 +7,10 @@
 .cartText {
   width: 90%;
   margin-left: 10px;
+}
+.cartElements {
+  max-height: 75%;
+  overflow-y: auto; /* 세로 스크롤 활성화 */
 }
 
 .cartElement {
