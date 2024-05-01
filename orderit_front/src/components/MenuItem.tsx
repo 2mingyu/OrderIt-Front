@@ -18,7 +18,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuDetails }) => {
   }
 
   return (
-    <div className="menuItem" onClick={() => handleClick(menuDetails.eng_name)}>
+    <div className="menuItem" onClick={() => handleClick(menuDetails.kor_name)}>
       {menuDetails.imageObj && 
       <img src={menuDetails.imageObj.src} className="menuImage" alt={menuDetails.eng_name}/>}
       <div className="menuInfo">
