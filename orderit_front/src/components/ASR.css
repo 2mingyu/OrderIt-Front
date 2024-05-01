@@ -5,6 +5,50 @@
   border-radius: 10px;
 }
 
+.ASR-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
 .ASR-text {
   margin-left: 10px;
+}
+
+.record-border {
+  border: 1px solid gray;
+  border-radius: 100%;
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.record-start-button {
+  background-color: red;
+  border-radius: 100%;
+  width: 15px;
+  height: 15px;
+}
+
+.record-stop-button {
+  background-color: black;
+  width: 13px;
+  height: 13px;
+}
+
+.ASR-content {
+  padding: 10px;
+}
+
+.transcript {
+  font-size: 20px;
+}
+
+.responseText {
+  margin-top: 20px;
+  font-size: 14px;
 }

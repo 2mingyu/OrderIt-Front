@@ -39,7 +39,14 @@ const ASR: React.FC = () => {
     recognition.onerror = (event: any) => {
       console.error('음성인식 에러:', event.error);
     };
-  }, []);
+
+    // 컴포넌트 언마운트 시 음성인식 중지
+    return () => {
+      if (isListening) {
+        recognition.stop();
+      }
+    };
+  }, [isListening]);
   
   const handleListen = () => {
     if (isListening) {
@@ -56,10 +63,16 @@ const ASR: React.FC = () => {
 
   return (
     <div className='ASR'>
-      <h2 className='ASR-text'>음성인식</h2>
-      <button onClick={handleListen}>{isListening ? '중지하기' : '시작하기'}</button>
-      <div className='transcript'>인식된 내용: {transcript}</div>
-      <div className='responseText'>응답: {responseText}</div>
+      <div className='ASR-title'>
+        <h2 className='ASR-text'>음성인식</h2>
+        <span className='record-border' onClick={handleListen}>
+          {isListening? <div className='record-stop-button' /> : <div className='record-start-button' />}
+        </span>
+      </div>
+      <div className='ASR-content'>
+        <div className='transcript'>{transcript}</div>
+        <div className='responseText'>{responseText}</div>
+      </div>
     </div>
   );
 }
