@@ -7,19 +7,18 @@ interface AddToCartParams {
 }
 
 export const addToCart = ({ cart, setCart, cartKey, cartItem, addNum }: AddToCartParams) => {
-  const updatedCart = { ...cart };
-
-  if (updatedCart[cartKey]) {
-    updatedCart[cartKey].quantity += 1;
-  }
-  else {
-    updatedCart[cartKey] = {
-      menuItem: cartItem,
-      quantity: 1,
-    };
-  }
-
-  setCart(updatedCart);
+  setCart(prevCart => {
+    const updatedCart = { ...prevCart };
+    if (updatedCart[cartKey]) {
+      updatedCart[cartKey].quantity += addNum;
+    } else {
+      updatedCart[cartKey] = {
+        menuItem: cartItem,
+        quantity: addNum,
+      };
+    }
+    return updatedCart;
+  });
 };
 
 interface PlusToCartParams {
@@ -31,7 +30,7 @@ interface PlusToCartParams {
 
 export const plusToCart = ({ cart, setCart, cartKey, plusNum }: PlusToCartParams) => {
   const updatedCart = { ...cart };
-  updatedCart[cartKey].quantity += 1;
+  updatedCart[cartKey].quantity += plusNum;
   setCart(updatedCart);
 };
 

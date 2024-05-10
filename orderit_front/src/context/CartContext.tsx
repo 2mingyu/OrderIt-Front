@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface CartContextType {
   cart: TypeCart; // 카트 리스트의 타입을 더 구체적으로 정의할 수 있습니다.
@@ -18,6 +18,11 @@ const CartContext = createContext<CartContextType>(initialState);
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState(initialState.cart);
 
+  // useEffect를 사용하여 카트 상태가 변할 때마다 로그를 남깁니다.
+  useEffect(() => {
+    console.log('Cart Updated:', cart);
+  }, [cart]);  // cart 상태가 변화할 때마다 이 useEffect가 실행됩니다.
+  
   return (
     <CartContext.Provider value={{ cart, setCart }}>
       {children}
