@@ -22,7 +22,14 @@ function App() {
   useEffect(() => {
     const fetchMenuList = async() => {
       setIsLoading(true);
-      await GET_item(setMenuList);
+      try {
+        await Promise.race([
+          GET_item(setMenuList),
+          new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout after 10 seconds")), 10000))
+        ]);
+      } catch (error) {
+        console.error(error);
+      }
       setIsLoading(false);
     };
     setDineOrTakeout('');

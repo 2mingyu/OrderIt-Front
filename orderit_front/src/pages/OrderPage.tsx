@@ -14,7 +14,7 @@ import Payment from '../components/Payment';
 import Result from '../components/Result';
 
 
-const Order: React.FC = () => {
+const OrderPage: React.FC = () => {
   const { menuList } = useMenuList();
   const { cart, setCart } = useCart();
   const [selectedCategory, setSelectedCategory] = useState(Object.keys(menuList)[0]); // 첫 번째 카테고리 키 값으로 설정
@@ -41,7 +41,7 @@ const Order: React.FC = () => {
         <MenuOptions selectedCategory={selectedCategory} selectedMenu={selectedMenu} closeMenuOptions={() => setSelectedMenu("")} />
       */}
       <div className='container-1'>
-        <ASR/>
+        <ASR setIsPayment={setIsPayment}/>
         <CartList/>
         <div className='container-2'>
             <h2 className='container-2-text'>주문금액</h2>
@@ -60,4 +60,4 @@ const Order: React.FC = () => {
   );
 };
 
-export default Order;
+export default OrderPage;

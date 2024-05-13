@@ -5,6 +5,10 @@ import React, { useEffect, useState } from 'react';
 import Get_text from '../utils/Get_text';
 import './ASR.css';
 
+interface ASRProps {
+  setIsPayment: (status: string) => void;
+}
+
 declare global {
   interface Window {
     SpeechRecognition: any;
@@ -19,7 +23,7 @@ recognition.continuous = true;  // 연속적으로 음성 인식
 recognition.lang = 'ko-KR';
 recognition.interimResults = true;  // 중간 결과 반환
 
-const ASR: React.FC = () => {
+const ASR: React.FC<ASRProps> = ({ setIsPayment }) => {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [responseText, setResponseText] = useState('');
@@ -56,6 +60,13 @@ const ASR: React.FC = () => {
       const quantity = parseInt(order.quantity);
       let menuItemFound = null;
       let menuItemKey = '';
+      if (order.menu === "receipt") {
+        if (quantity === -1) {
+          setIsPayment('wait');
+          recognition.stop();
+        }
+        return;
+      }
 
       Object.values(menuList).forEach(category => {
         Object.entries(category).forEach(([key, menuItem]) => {
