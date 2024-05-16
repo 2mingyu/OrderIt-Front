@@ -23,7 +23,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ menuDetails }) => {
       <img src={menuDetails.imageObj.src} className="menuImage" alt={menuDetails.eng_name}/>}
       <div className="menuInfo">
         {/* <h2 className="menuName">{menuDetails.kor_name}</h2> */}
-        <h2 className="menuName">{menuDetails.eng_name}</h2>
+        <h2 className="menuName">{menuDetails.kor_name}</h2>
         <h3 className="menuPrice">{menuDetails.price}원</h3>
       </div>
     </div>

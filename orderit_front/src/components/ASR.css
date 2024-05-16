@@ -1,5 +1,5 @@
 .ASR {
-  flex-grow: 1;
+  width: calc(100% - 400px - 200px);
 
   background-color: #ffffff;
   border-radius: 10px;

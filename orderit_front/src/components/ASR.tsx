@@ -56,6 +56,10 @@ const ASR: React.FC<ASRProps> = ({ setIsPayment }) => {
   }, [isListening]);
 
   const handleFinalTranscript = (response: any) => {
+    if (!menuList || Object.keys(menuList).length === 0) {
+      console.error("메뉴 리스트가 로드되지 않았습니다.");
+      return; // 메뉴 리스트가 비어있으면 함수 실행 중지
+    }
     response.Order.forEach(async (order: { menu: string; quantity: string }) => {
       const quantity = parseInt(order.quantity);
       let menuItemFound = null;
