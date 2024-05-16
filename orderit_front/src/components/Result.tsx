@@ -2,13 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Result.css';
 import ReceptIcon from '../assets/Recept-icon.webp'
+import { API_URL_SPRING } from '../utils/apiConfig_spring';
 
-const Result: React.FC = () => {
+interface ResultProps {
+  orderId: number;
+}
+
+const Result: React.FC<ResultProps> = ({ orderId }) => {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(5);
 
-  const printRecept = () => {
-    alert('영수증 출력');
+  const printRecept = async () => {
+    try {
+      const response = await fetch(
+        `http://${API_URL_SPRING}/api/order/${orderId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        }
+      )
+      if (response.status === 200) {
+        console.log(`/api/order/${orderId} ${response.status}`);
+        return true;
+      }
+      else {
+        throw new Error(`/api/order/${orderId} ${response.status}`);
+      }
+    }
+    catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {

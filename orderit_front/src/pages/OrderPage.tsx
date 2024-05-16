@@ -20,6 +20,7 @@ const OrderPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState(Object.keys(menuList)[0]); // 첫 번째 카테고리 키 값으로 설정
   // const [selectedMenu, setSelectedMenu] = useState("");
   const [isPayment, setIsPayment] = useState('before'); // before, wait, after
+  const [orderId, setOrderId] = useState(-1);
 
   const calculateTotal = () => {
     return Object.values(cart).reduce((total: number, item: TypeCartItem) => {
@@ -51,10 +52,10 @@ const OrderPage: React.FC = () => {
         </div>
       </div>
       {isPayment==='wait' && 
-        <Payment setIsPayment={setIsPayment} total={calculateTotal()}/>
+        <Payment setIsPayment={setIsPayment} total={calculateTotal()} setOrderId={setOrderId}/>
       }
       {isPayment==='after' &&
-        <Result />
+        <Result orderId={orderId} />
       }
     </div>
   );

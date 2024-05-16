@@ -6,9 +6,10 @@ import './Payment.css';
 interface PaymentProps {
   setIsPayment: (value: string) => void;
   total: number;
+  setOrderId: (value: number) => void;
 }
 
-const Payment: React.FC<PaymentProps> = ({ setIsPayment, total }) => {
+const Payment: React.FC<PaymentProps> = ({ setIsPayment, total, setOrderId }) => {
   const { cart } = useCart();
   const { dineOrTakeout } = useDineOrTakeout();
   const closePayment = () => {
@@ -18,6 +19,7 @@ const Payment: React.FC<PaymentProps> = ({ setIsPayment, total }) => {
     if (dineOrTakeout === null) return;
     const response = await Post_order(cart, dineOrTakeout);
     console.log(response);
+    setOrderId(response["orderId"]);
     setIsPayment('after');
   };
 

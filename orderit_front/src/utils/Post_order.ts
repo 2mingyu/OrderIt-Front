@@ -31,8 +31,9 @@ async function Post_order(cart: TypeCart, dineOrTakeout: string) {
     );
     console.log(data);
     if (response.status === 200) {
+      const responseJson = await response.json();
       console.log(`/api/order ${response.status}`);
-      return true;
+      return responseJson;
     }
     else {
       throw new Error(`/api/order ${response.status}`);
