@@ -1,30 +1,9 @@
+import { tmpMenuList } from './tmpMenuList';
 import { API_URL_SPRING } from './apiConfig_spring';
 import { preloadImage } from './preloadImage';
 
 async function Get_item(setMenuList: (menuList: TypeMenuList) => void) {
   // 임시
-  let tmpMenuList = {
-    'HOT': {
-      '아메리카노': {
-        "item_id": 1,
-        "eng_name": "americano",
-        "kor_name": "아메리카노",
-        "price": 3000,
-        "imagePath": "example.jpg",
-      }
-    },
-    'Cold': {
-    },
-    'Dessert': {
-      'greentealatte_ice': {
-        "item_id": 2,
-        "eng_name": "greentealatte_ice",
-        "kor_name": "아이스그린티라떼",
-        "price": 5000,
-        "imagePath": "6831e236-4eec-4c81-b53b-d2bb282835cegreentealatte_ice.png",
-      }
-    },
-  };
   setMenuList(tmpMenuList);
   // 서버 api 호출
   let menuList: TypeMenuList = {};
