@@ -42,7 +42,7 @@ const ASR: React.FC<ASRProps> = ({ setIsPayment }) => {
         handleFinalTranscript(response);
       }
     };
-  
+
     recognition.onerror = (event: any) => {
       console.error('음성인식 에러:', event.error);
     };
@@ -96,17 +96,24 @@ const ASR: React.FC<ASRProps> = ({ setIsPayment }) => {
     ).join('\n');
     setResponseText(responseString);
   };
-  
+
   const handleListen = () => {
     if (isListening) {
-      recognition.stop();
-      setIsListening(false);
-      console.log('음성인식 중지');
-    }
-    else {
-      recognition.start();
-      setIsListening(true);
-      console.log('음성인식 시작');
+      try {
+        recognition.stop();
+        setIsListening(false);
+        console.log('음성인식 중지');
+      } catch (error) {
+        console.error('음성인식 중지 에러:', error);
+      }
+    } else {
+      try {
+        recognition.start();
+        setIsListening(true);
+        console.log('음성인식 시작');
+      } catch (error) {
+        console.error('음성인식 시작 에러:', error);
+      }
     }
   };
 
